@@ -9,7 +9,7 @@
 #define length 6;
 int main(void)
 {
-    FILE *fp = fopen("omega.csv", "r");
+    FILE* fp = fopen("manyCities.csv", "r");
     if (fp == NULL)
     {
         printf("jsj");
@@ -19,7 +19,7 @@ int main(void)
     char line[10];
     int value1;
     int value2;
-    int citiesArray[8][2];
+    int citiesArray[100][2];
     int counter = 0;
     while (fgets(line, 10, fp) != NULL)
     {
@@ -32,11 +32,15 @@ int main(void)
     fclose(fp);
     //printf("\n%d", citiesArray[8][1]);
     //exit(0);
+    float initTemperature = 10;
 
-    int temperature = 1000;
-    float coolingFactor = 0.001;
-    float prefDistance = 1000000;
-    float cityDistance[8][8];
+    float temperature;
+    int k = 1;
+    float coolingFactor;
+    float initCoolingFactor = 0.000001;
+    float prefDistance;
+    float initPrefDistance = 1000000;
+    float cityDistance[100][100];
     float randomValue;
     int randomNumber2;
     int randomNumber1;
@@ -57,8 +61,10 @@ int main(void)
      {2, 2} ,
     };*/
     int numbCities = sizeof(citiesArray) / sizeof(citiesArray[0]);
-    int randomTour[8];
-    int tourOptimal[8];
+    int randomTour[100];
+    int tourOptimal[100];
+    float tourMat[6][5];
+
 
     for (int i = 0; i < numbCities; ++i)
     {
@@ -71,52 +77,92 @@ int main(void)
         //printf("\n");
     }
 
-    for (int i = 0; i < numbCities; ++i) {
-        randomTour[i] = i;
-    }
-    
-    srand(time(NULL));
-    for (int i = 0; i < 6905; ++i) {
 
-        randomNumber1 = rand() % numbCities;
-        randomNumber2 = rand() % numbCities;
-        /*printf("\n");
-        printf("%d ", randomNumber1);
-        printf("%d ", randomNumber2);*/
-        swap1 = randomTour[randomNumber1];
-        swap2 = randomTour[randomNumber2];
-        randomTour[randomNumber2] = swap1;
-        randomTour[randomNumber1] = swap2;
+    for (int tempIndex = 0; tempIndex < 6; ++tempIndex)
+    {
 
-        tourDistance = 0;
-        //printf("\n");
-        for (int i = 0; i < numbCities - 1; ++i) {
-            tourDistance = tourDistance + cityDistance[randomTour[i]][randomTour[i + 1]];
-            //printf("%lf ", cityDistance[randomTour[i]][randomTour[i + 1]]);
-            //printf("%d ", randomTour[i + 1]);
-
-        }
-        //printf("%lf ", tourDistance);
-        difference = tourDistance - prefDistance;
-        randomValue = (float)rand() / RAND_MAX;
-        if (difference < 0 || exp(-difference / temperature) > randomValue) {
-            prefDistance = tourDistance;
-            for (int k = 0; k < numbCities; ++k) {
-                tourOptimal[k] = randomTour[k];
-                
-                //printf("%d ", randomTour[k]);
+        //temperature = initTemperature * pow(10, tempIndex);
+        //printf("%lf ", temperature);
+        printf("\n");
+        for (int coolIndex = 0; coolIndex < 5; ++coolIndex)
+        {
+            /*printf("%lf ", coolingFactor);*/
+            temperature = initTemperature * 0.0000001 * pow(10, tempIndex);
+            coolingFactor = initCoolingFactor * pow(10, coolIndex);
+            prefDistance = initPrefDistance;
+            int tourOptimal[100];
+            printf("%lf ", coolingFactor);
+            printf("%lf ", temperature);
+            for (int i = 0; i < numbCities; ++i) {
+                randomTour[i] = i;
             }
 
-        }
-        temperature = temperature * (1 - coolingFactor);
+            srand(time(NULL));
+            for (int i = 0; i < 100000; ++i) {
 
+                randomNumber1 = rand() % numbCities;
+                randomNumber2 = rand() % numbCities;
+                /*printf("\n");
+                printf("%d ", randomNumber1);
+                printf("%d ", randomNumber2);*/
+                swap1 = randomTour[randomNumber1];
+                swap2 = randomTour[randomNumber2];
+                randomTour[randomNumber2] = swap1;
+                randomTour[randomNumber1] = swap2;
+
+                tourDistance = 0;
+                //printf("\n");
+                for (int i = 0; i < numbCities - 1; ++i) {
+                    tourDistance = tourDistance + cityDistance[randomTour[i]][randomTour[i + 1]];
+                    //printf("%lf ", cityDistance[randomTour[i]][randomTour[i + 1]]);
+                    //printf("%d ", randomTour[i + 1]);
+
+                }
+                if (k == 1)
+                {
+                    //printf("%lf ", tourDistance);
+                    k = 0;
+                }
+                difference = tourDistance - prefDistance;
+                randomValue = (float)rand() / RAND_MAX;
+                printf("%lf ",difference );
+                if (difference < 0 || exp(-difference / temperature) > randomValue) {
+                    prefDistance = tourDistance;
+                    for (int k = 0; k < numbCities; ++k) {
+                        tourOptimal[k] = randomTour[k];
+
+                        //printf("%d ", randomTour[k]);
+                    }
+
+                }
+
+                temperature = temperature * (1 - coolingFactor);
+                //printf("%lf ", (1 - coolingFactor));
+
+            }
+            //printf("%lf ", temperature);
+            //printf("%lf ", tourDistance);
+            tourMat[tempIndex][coolIndex] = prefDistance;
+        }
     }
-    printf("%lf ", prefDistance);
-    printf("\n");
-    for (int k = 0; k < numbCities; ++k) {
-        //tourOptimal[k] = randomTour[k];
-        /*printf("\n");*/
-        printf("%d ", tourOptimal[k]);
+
+
+
+    /*printf("%lf ", prefDistance);
+    printf("\n");*/
+    //for (int k = 0; k < numbCities; ++k) {
+    //    tourOptimal[k] = randomTour[k];
+    //    /*printf("\n");*/
+    //    printf("%d ", tourOptimal[k]);
+    //}
+
+    for (int k = 0; k < 6; ++k) {
+        for (int i = 0; i < 5; ++i) {
+            //tourOptimal[k] = randomTour[k];
+            /*printf("\n");*/
+            printf("%lf ", tourMat[i][k]);
+        }
+        printf("\n");
     }
 
 }

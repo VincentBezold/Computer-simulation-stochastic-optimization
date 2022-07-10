@@ -1,0 +1,14 @@
+close all
+clear all
+clc
+data = readtable('Test.csv');
+x = table2array(data(:,1));
+y = table2array(data(:,2));
+order = [1 3 7 6 5 4 2 0 1]; %7 5 6 4 3 1 2 0
+order = order + 1;
+plot(x(order), y(order),'x-')
+xlabel('Coordinates');
+ylabel('Coordinates');
+xlim([-0.5 2.5])
+ylim([-1 5])
+title(t*50);

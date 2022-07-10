@@ -1,10 +1,12 @@
 ﻿  salesmanMain.c
-C:\Users\vince\Documents\ComputerSimulationen\Computer-simulation-stochastic-optimization\salesman\salesman\salesmanMain.c(67,38): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\vince\Documents\ComputerSimulationen\Computer-simulation-stochastic-optimization\salesman\salesman\salesmanMain.c(78,15): warning C4244: 'function': conversion from 'time_t' to 'unsigned int', possible loss of data
-C:\Users\vince\Documents\ComputerSimulationen\Computer-simulation-stochastic-optimization\salesman\salesman\salesmanMain.c(111,35): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\vince\Documents\ComputerSimulationen\Computer-simulation-stochastic-optimization\salesman\salesman\salesmanMain.c(37,1): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\vince\Documents\ComputerSimulationen\Computer-simulation-stochastic-optimization\salesman\salesman\salesmanMain.c(43,9): warning C4101: 'tourPositionOne': unreferenced local variable
+C:\Users\vince\Documents\ComputerSimulationen\Computer-simulation-stochastic-optimization\salesman\salesman\salesmanMain.c(73,38): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\vince\Documents\ComputerSimulationen\Computer-simulation-stochastic-optimization\salesman\salesman\salesmanMain.c(90,55): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\vince\Documents\ComputerSimulationen\Computer-simulation-stochastic-optimization\salesman\salesman\salesmanMain.c(91,47): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\vince\Documents\ComputerSimulationen\Computer-simulation-stochastic-optimization\salesman\salesman\salesmanMain.c(100,23): warning C4244: 'function': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\vince\Documents\ComputerSimulationen\Computer-simulation-stochastic-optimization\salesman\salesman\salesmanMain.c(40,1): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\vince\Documents\ComputerSimulationen\Computer-simulation-stochastic-optimization\salesman\salesman\salesmanMain.c(47,9): warning C4101: 'tourPositionOne': unreferenced local variable
+C:\Users\vince\Documents\ComputerSimulationen\Computer-simulation-stochastic-optimization\salesman\salesman\salesmanMain.c(65,9): warning C4101: 'tourOptimal': unreferenced local variable
 C:\Users\vince\Documents\ComputerSimulationen\Computer-simulation-stochastic-optimization\salesman\salesman\salesmanMain.c(21,9): warning C4101: 'value2': unreferenced local variable
-C:\Users\vince\Documents\ComputerSimulationen\Computer-simulation-stochastic-optimization\salesman\salesman\salesmanMain.c(44,9): warning C4101: 'tourPositionTwo': unreferenced local variable
+C:\Users\vince\Documents\ComputerSimulationen\Computer-simulation-stochastic-optimization\salesman\salesman\salesmanMain.c(48,9): warning C4101: 'tourPositionTwo': unreferenced local variable
 C:\Users\vince\Documents\ComputerSimulationen\Computer-simulation-stochastic-optimization\salesman\salesman\salesmanMain.c(20,9): warning C4101: 'value1': unreferenced local variable
   salesman.vcxproj -> C:\Users\vince\Documents\ComputerSimulationen\Computer-simulation-stochastic-optimization\salesman\x64\Debug\salesman.exe
